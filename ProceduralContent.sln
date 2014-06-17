@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{658B00D0-62F3-4FB2-B149-8A713FB8ED60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noise", "Noise\Noise.csproj", "{ED14B0FE-3044-435B-BB83-FC3B618A2D5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewers", "Viewers\Viewers.csproj", "{501ADD09-6E9D-4A6E-8BB6-A7780F60EDB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501ADD09-6E9D-4A6E-8BB6-A7780F60EDB1}.Debug|x86.ActiveCfg = Debug|x86
+		{501ADD09-6E9D-4A6E-8BB6-A7780F60EDB1}.Debug|x86.Build.0 = Debug|x86
+		{501ADD09-6E9D-4A6E-8BB6-A7780F60EDB1}.Release|x86.ActiveCfg = Release|x86
+		{501ADD09-6E9D-4A6E-8BB6-A7780F60EDB1}.Release|x86.Build.0 = Release|x86
+		{658B00D0-62F3-4FB2-B149-8A713FB8ED60}.Debug|x86.ActiveCfg = Debug|x86
+		{658B00D0-62F3-4FB2-B149-8A713FB8ED60}.Debug|x86.Build.0 = Debug|x86
+		{658B00D0-62F3-4FB2-B149-8A713FB8ED60}.Release|x86.ActiveCfg = Release|x86
+		{658B00D0-62F3-4FB2-B149-8A713FB8ED60}.Release|x86.Build.0 = Release|x86
+		{ED14B0FE-3044-435B-BB83-FC3B618A2D5D}.Debug|x86.ActiveCfg = Debug|x86
+		{ED14B0FE-3044-435B-BB83-FC3B618A2D5D}.Debug|x86.Build.0 = Debug|x86
+		{ED14B0FE-3044-435B-BB83-FC3B618A2D5D}.Release|x86.ActiveCfg = Release|x86
+		{ED14B0FE-3044-435B-BB83-FC3B618A2D5D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Tests\Tests.csproj
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
