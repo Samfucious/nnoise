@@ -44,7 +44,7 @@ namespace Viewers
 			{
 				for(int y = 0; y < height; y++)
 				{
-					gc.RgbFgColor = ColorFromValue(field[x * xScale, y * yScale]);
+					gc.RgbFgColor = ColorFromValue(field[(x - 256) * xScale, (y - 256) * yScale]);
 					pixmap.DrawPoint(gc, x, y);
 				}
 			}

@@ -73,5 +73,10 @@ namespace ProceduralContent.Noise
         {
             get { return this.GetHashCode(); }
         }
+
+        public void Clear()
+        {
+            axis.Clear();
+        }
     }
 }

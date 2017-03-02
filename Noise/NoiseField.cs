@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ProceduralContent.Noise
 {
@@ -34,7 +33,7 @@ namespace ProceduralContent.Noise
             }
         }
 
-        Func<double, double, double, double> InterpolationFunc
+        Interpolator InterpolationFunc
         {
             get 
             {
@@ -48,9 +47,9 @@ namespace ProceduralContent.Noise
             public int Wavelength { get; private set; }
             public IRandom Random { get; private set; }
             public double Scale { get; private set; }
-            public Func<double, double, double, double> InterpolationFunc { get; private set; }
+            public Interpolator InterpolationFunc { get; private set; }
 
-            public Context(int dimensions, int wavelength, IRandom random, double scale = 1.0, Func<double, double, double, double> interpolationFunc = null)   
+            public Context(int dimensions, int wavelength, IRandom random, double scale = 1.0, Interpolator interpolationFunc = null)   
             {
                 Dimensions = dimensions;
                 Wavelength = wavelength;
@@ -77,17 +76,25 @@ namespace ProceduralContent.Noise
                     List<double> dependencies = new List<double>();
                     for (int i = 0; i < coordinates.Length; i++)
                     {
-                        int remainder = coordinates[i] % Wavelength;
+                        int remainder;
+                        int waveLow;
+                        int waveHigh;
+
+                        remainder = coordinates[i] % Wavelength;
+                        
                         if (remainder != 0)
                         {
+                            waveLow = coordinates[i] - remainder;
+                            waveHigh = coordinates[i] > 0 ?
+                                coordinates[i] + (Wavelength - remainder) :
+                                coordinates[i] - (Wavelength + remainder);
+
                             int[] copyLow = new int[coordinates.Length];
                             coordinates.CopyTo(copyLow, 0);
-                            int waveLow = coordinates[i] - remainder;
                             copyLow[i] = waveLow;
 
                             int[] copyHigh = new int[coordinates.Length];
                             coordinates.CopyTo(copyHigh, 0);
-                            int waveHigh = coordinates[i] + (Wavelength - remainder);
                             copyHigh[i] = waveHigh;
 
                             double t = ((double)remainder) / ((double)Wavelength);
@@ -96,12 +103,25 @@ namespace ProceduralContent.Noise
                         }
                     }
 
+                    double dependenciesSum = 0.0;
+                    foreach (double d in dependencies)
+                    {
+                        dependenciesSum += d;
+                    }
+
                     nvector = NNoiseVector.New(coordinates);
-                    nvector.Data = dependencies.Count > 0 ? dependencies.Sum() / dependencies.Count : Rand.NextDouble(nvector.NoiseHash) * _context.Scale;
+                    nvector.Data = dependencies.Count > 0 ? 
+                        dependenciesSum / dependencies.Count : 
+                        Rand.NextDouble(nvector.NoiseHash) * _context.Scale;
                     VectorSpace[coordinates] = nvector;
                 }
-                return ((NVector<double>)nvector).Data;
+                return nvector.Data;
             }
+        }
+
+        public void Clear()
+        {
+            _vectorSpace.Clear();
         }
     }
 }

@@ -8,10 +8,21 @@ namespace ProceduralContent.Noise
     }
 
     public class DefaultRandom : IRandom
-    {        
+    {
+        int mMask;
+
+        public DefaultRandom() : this(0)
+        {
+        }
+
+        public DefaultRandom(int mask)
+        {
+            mMask = mask;
+        }
+
         public double NextDouble(double seed)
         {
-            Random random = new Random(seed.GetHashCode());
+            Random random = new Random(seed.GetHashCode() ^ mMask);
             return random.NextDouble();
         }
     }

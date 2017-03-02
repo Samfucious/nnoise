@@ -4,5 +4,6 @@
     {
         int[] Coordinates { get; }
         int Dimensions { get; }
+        void Clear();
     }
 }

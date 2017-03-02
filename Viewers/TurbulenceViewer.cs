@@ -31,7 +31,6 @@ namespace Viewers
 
 		protected override Gdk.Color ColorFromValue(double noise)
 		{
-			noise = Math.Min (1.0, noise - 1.0);
 			double min = Math.Min (byte.MaxValue, byte.MaxValue * noise);
 			double final = Math.Max(byte.MinValue, min);
 			

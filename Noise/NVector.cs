@@ -40,6 +40,10 @@ namespace ProceduralContent.Noise
             vector.Coordinates = coordinates;
             return vector;
         }
+
+        public void Clear()
+        {
+        }
     }
 
     public class NVector<TData> : NVector

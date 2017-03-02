@@ -2,7 +2,7 @@
 
 namespace ProceduralContent.Noise
 {
-    using Interpolator = Func<double, double, double, double>; 
+    public delegate double Interpolator(double v1, double v2, double t);
 
     public static class Interpolation
     {

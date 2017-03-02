@@ -42,6 +42,11 @@ namespace ProceduralContent.Noise
             }
         }
 
+        public void Clear()
+        {
+            foreach (NoiseField noiseField in _noiseFields) noiseField.Clear();
+        }
+
         public double this[params int[] coordinates]
         {
             get
@@ -51,7 +56,7 @@ namespace ProceduralContent.Noise
                 {
                     retval += field[coordinates];
                 }
-                return retval;
+                return Math.Max(0.0, Math.Min(1.0, retval - 1.0));
             }
         }
     }

@@ -42,5 +42,10 @@ namespace ProceduralContent.Noise
         {
             return new NVectorSpace(dimensions) { Dimensions = dimensions };
         }
+
+        public void Clear()
+        {
+            rootAxis.Clear();
+        }
     }
 }

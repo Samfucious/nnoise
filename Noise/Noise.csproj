@@ -11,6 +11,8 @@
     <RootNamespace>Noise</RootNamespace>
     <AssemblyName>Noise</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
